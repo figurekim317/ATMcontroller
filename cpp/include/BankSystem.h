@@ -3,6 +3,7 @@
 
 #include <string>
 #include <unordered_map>
+#include <stdexcept>
 #include "Account.h"
 #include "Card.h"
 
@@ -14,12 +15,15 @@ private:
 
 public:
     // Adds a new account to the bank system.
+    // Throws an exception if the account ID already exists.
     void add_account(const std::string& account_id, const std::string& pin, int initial_balance = 0);
 
     // Validates the PIN for a given card.
+    // Returns true if the PIN is correct, false otherwise.
     bool validate_pin(const Card& card, const std::string& pin) const;
 
     // Retrieves the Account object associated with a given card.
+    // Throws an exception if the account does not exist.
     Account& get_account(const Card& card);
 };
 

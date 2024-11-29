@@ -2,6 +2,26 @@
 
 A simple ATM controller implemented in both Python and C++.
 
+---
+
+## Table of Contents
+
+1. [Clone the Project](#clone-the-project)
+2. [Requirements](#requirements)
+3. [Project Structure](#project-structure)
+4. [Code Overview](#code-overview)
+   - [Python Code](#python-code)
+   - [C++ Code](#c++-code)
+5. [How to Build and Run Tests](#how-to-build-and-run-tests)
+   - [Python](#python)
+   - [C++](#c++)
+   - [Docker](#docker)
+6. [Exception Handling](#exception-handling)
+7. [Testing](#testing)
+8. [Scripts](#scripts)
+
+---
+
 ## Clone the Project
 
 Clone the repository using the following command:
@@ -34,26 +54,41 @@ ATMcontroller/
 │   │   ├── account.py
 │   │   ├── atm_controller.py
 │   │   ├── bank_system.py
-│   │   └── card.py
-│   └── tests/
-│       ├── __init__.py
-│       ├── test_atm.py
-│       └── run_tests.sh
+│   │   ├── card.py
+│   │   ├── utils.py             # Shared utility functions
+│   │   └── config.py            # Configuration file
+│   ├── tests/
+│   │   ├── __init__.py
+│   │   ├── test_atm.py
+│   │   ├── test_card.py
+│   │   └── run_tests.sh
+│   └── README.md                # Description of the Python folder
 ├── cpp/
 │   ├── include/
 │   │   ├── Account.h
 │   │   ├── ATMController.h
 │   │   ├── BankSystem.h
-│   │   └── Card.h
+│   │   ├── Card.h
+│   │   └── Utility.h            # Shared utility header
 │   ├── src/
 │   │   ├── Account.cpp
 │   │   ├── ATMController.cpp
 │   │   ├── BankSystem.cpp
-│   │   └── Card.cpp
+│   │   ├── Card.cpp
+│   │   └── Utility.cpp          # Shared utility implementation
 │   ├── tests/
-│   │   └── test_atm.cpp
+│   │   ├── test_atm.cpp
+│   │   └── test_card.cpp
 │   ├── Makefile
 │   └── run_tests.sh
+├── docs/
+│   ├── API.md                   # API documentation
+│   ├── CHANGELOG.md             # Change log
+│   ├── ISSUES.md                # Known issues tracker
+│   └── README.md                # Project-wide description
+└── .github/
+    ├── workflows/
+    │   └── ci.yml               # GitHub Actions configuration
 ```
 
 ### Python Code Overview

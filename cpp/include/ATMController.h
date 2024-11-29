@@ -3,6 +3,7 @@
 
 #include "BankSystem.h"
 #include "Card.h"
+#include "Account.h"
 
 // The ATMController class manages ATM operations and user interactions.
 class ATMController {
@@ -29,12 +30,15 @@ public:
     void select_account();
 
     // Displays the balance of the selected account.
+    // Throws an exception if no account is selected or the user is not authenticated.
     int view_balance() const;
 
     // Deposits a specified amount into the selected account.
+    // Throws an exception if no account is selected or the user is not authenticated.
     int deposit(int amount);
 
     // Withdraws a specified amount from the selected account.
+    // Throws an exception if no account is selected or the user is not authenticated.
     int withdraw(int amount);
 };
 

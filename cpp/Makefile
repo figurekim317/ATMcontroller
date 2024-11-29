@@ -1,11 +1,10 @@
-# Makefile
-
 CXX = g++
-CXXFLAGS = -std=c++11 -Iinclude -Wall -Wextra
+CXXFLAGS = -std=c++11 -Iinclude -Wall -Wextra -Wpedantic -Werror
 
 SRC_DIR = src
 TEST_DIR = tests
 OBJ_DIR = obj
+BIN_DIR = bin
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
@@ -13,7 +12,7 @@ OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 TEST_SRCS = $(wildcard $(TEST_DIR)/*.cpp)
 TEST_OBJS = $(TEST_SRCS:$(TEST_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-TARGET = test_atm
+TARGET = $(BIN_DIR)/test_atm
 
 all: $(TARGET)
 
@@ -26,9 +25,13 @@ $(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJS) $(TEST_OBJS)
+	@mkdir -p $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+test: $(TARGET)
+	./$(TARGET)
 
-.PHONY: all clean
+clean:
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
+
+.PHONY: all clean test

@@ -1,5 +1,6 @@
 #include "ATMController.h"
 #include <stdexcept>
+#include <iostream> // For optional logging
 
 // Constructor initializes the ATMController with a given bank system.
 ATMController::ATMController(BankSystem& bank_system)
@@ -13,10 +14,20 @@ void ATMController::insert_card(Card& card) {
     current_card = &card;
     authenticated = false;
     current_account = nullptr;
+
+    // Optional logging
+    std::cout << "[INFO] Card inserted: " << card.get_card_number() << std::endl;
 }
 
 // Simulates ejecting the currently inserted card.
 void ATMController::eject_card() {
+    if (current_card == nullptr) {
+        throw std::runtime_error("No card to eject.");
+    }
+
+    // Optional logging
+    std::cout << "[INFO] Card ejected: " << current_card->get_card_number() << std::endl;
+
     current_card = nullptr;
     authenticated = false;
     current_account = nullptr;
@@ -30,6 +41,9 @@ void ATMController::enter_pin(const std::string& pin) {
     if (bank_system.validate_pin(*current_card, pin)) {
         authenticated = true;
         current_account = &bank_system.get_account(*current_card);
+
+        // Optional logging
+        std::cout << "[INFO] PIN validated for card: " << current_card->get_card_number() << std::endl;
     } else {
         throw std::invalid_argument("Invalid PIN.");
     }
@@ -43,6 +57,9 @@ void ATMController::select_account() {
     if (current_account == nullptr) {
         throw std::runtime_error("No account associated with this card.");
     }
+
+    // Optional logging
+    std::cout << "[INFO] Account selected: " << current_account->get_account_id() << std::endl;
 }
 
 // Displays the balance of the selected account.
@@ -58,7 +75,12 @@ int ATMController::deposit(int amount) {
     if (current_account == nullptr) {
         throw std::runtime_error("Account not selected.");
     }
-    return current_account->deposit(amount);
+    int new_balance = current_account->deposit(amount);
+
+    // Optional logging
+    std::cout << "[INFO] Deposit made. Amount: " << amount << ", New Balance: " << new_balance << std::endl;
+
+    return new_balance;
 }
 
 // Withdraws a specified amount from the selected account.
@@ -66,5 +88,10 @@ int ATMController::withdraw(int amount) {
     if (current_account == nullptr) {
         throw std::runtime_error("Account not selected.");
     }
-    return current_account->withdraw(amount);
+    int new_balance = current_account->withdraw(amount);
+
+    // Optional logging
+    std::cout << "[INFO] Withdrawal made. Amount: " << amount << ", New Balance: " << new_balance << std::endl;
+
+    return new_balance;
 }
