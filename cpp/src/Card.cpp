@@ -5,16 +5,13 @@
 
 // Constructor that initializes the card with a given card number.
 Card::Card(const std::string& card_number) {
-    // Check if the card number is empty or contains non-digit characters
-    if (card_number.empty() || card_number.length() != 16 || !std::all_of(card_number.begin(), card_number.end(), ::isdigit)) {
+    // Check if the card number is empty, not 16 characters, or contains non-digit characters
+    if (card_number.empty() || card_number.length() != 16 || 
+        !std::all_of(card_number.begin(), card_number.end(), ::isdigit)) {
         throw std::invalid_argument("Invalid card number: must be a 16-digit numeric string.");
     }
 
-    // Validate the card number using the Luhn algorithm
-    if (!is_valid_card_number(card_number)) {
-        throw std::invalid_argument("Invalid card number: failed Luhn algorithm check.");
-    }
-
+    // Set the card number if valid
     this->card_number = card_number;
 }
 
@@ -22,8 +19,10 @@ Card::Card(const std::string& card_number) {
 bool Card::is_valid_card_number(const std::string& card_number) const {
     int sum = 0;
     bool alternate = false;
-    for (int i = card_number.length() - 1; i >= 0; --i) {
-        int digit = card_number[i] - '0';
+
+    // Process digits from right to left
+    for (auto it = card_number.rbegin(); it != card_number.rend(); ++it) {
+        int digit = *it - '0';  // Convert char to int
         if (alternate) {
             digit *= 2;
             if (digit > 9) digit -= 9;
@@ -31,7 +30,8 @@ bool Card::is_valid_card_number(const std::string& card_number) const {
         sum += digit;
         alternate = !alternate;
     }
-    return (sum % 10 == 0);
+
+    return (sum % 10 == 0);  // Valid if divisible by 10
 }
 
 // Retrieves the card number.
