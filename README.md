@@ -17,16 +17,86 @@ git clone https://github.com/figurekim317/ATMcontroller.git
 
 ### C++ Implementation:
 - **Compiler**: A C++ compiler supporting C++11 or higher (e.g., GCC, Clang).
+- **Make Utility**: For building the C++ project using the provided Makefile.
+
+### Docker (Optional):
+- **Docker**: Install Docker to run the implementations inside containers.
+
+---
+
 
 ## Project Structure
 
-### Python Code:
-- **`python/atm.py`**: Contains the ATM controller and related classes.
-- **`python/test_atm.py`**: Contains the unit tests for the ATM controller.
+### Python Code
 
-### C++ Code:
-- **`cpp/atm.cpp`**: Contains the ATM controller and related classes.
-- **`cpp/test_atm.cpp`**: Contains the unit tests for the ATM controller.
+ATMcontroller/
+├── python/
+    ├── atm/
+    │   ├── __init__.py
+    │   ├── account.py
+    │   ├── atm_controller.py
+    │   ├── bank_system.py
+    │   └── card.py
+    └── tests/
+        ├── __init__.py
+        ├── test_atm.py
+        └── run_tests.sh
+
+### Python Code Overview
+
+- **`python/atm/`**: Contains the core implementation of the ATM controller and its related classes.
+  - **`__init__.py`**: Initializes the `atm` package.
+  - **`account.py`**: Defines the `Account` class to manage account-related operations.
+  - **`atm_controller.py`**: Implements the `ATMController` class for controlling ATM operations.
+  - **`bank_system.py`**: Includes the `BankSystem` class for managing the bank's backend system.
+  - **`card.py`**: Contains the `Card` class for managing card-related operations.
+
+- **`python/tests/`**: Contains unit tests for the ATM controller and its components.
+  - **`__init__.py`**: Initializes the `tests` package.
+  - **`test_atm.py`**: Provides unit tests to verify the functionality of the ATM system.
+  - **`run_tests.sh`**: A script to automate the test execution.
+
+
+### C++ code
+
+ATMcontroller/
+├── cpp/
+    ├── include/
+    │   ├── Account.h
+    │   ├── ATMController.h
+    │   ├── BankSystem.h
+    │   └── Card.h
+    ├── src/
+    │   ├── Account.cpp
+    │   ├── ATMController.cpp
+    │   ├── BankSystem.cpp
+    │   └── Card.cpp
+    ├── tests/
+    │   └── test_atm.cpp
+    ├── Makefile
+    └── run_tests.sh
+
+### C++ Code Overview
+
+- **`cpp/include/`**: Contains the header files for defining the classes.
+  - **`Account.h`**: Declares the `Account` class.
+  - **`ATMController.h`**: Declares the `ATMController` class.
+  - **`BankSystem.h`**: Declares the `BankSystem` class.
+  - **`Card.h`**: Declares the `Card` class.
+
+- **`cpp/src/`**: Contains the source files for implementing the classes.
+  - **`Account.cpp`**: Implements the `Account` class.
+  - **`ATMController.cpp`**: Implements the `ATMController` class.
+  - **`BankSystem.cpp`**: Implements the `BankSystem` class.
+  - **`Card.cpp`**: Implements the `Card` class.
+
+- **`cpp/tests/`**: Contains the test code for the C++ implementation.
+  - **`test_atm.cpp`**: Includes unit tests for the ATM controller.
+
+- **`cpp/Makefile`**: A `Makefile` for building the C++ project and managing dependencies.
+- **`cpp/run_tests.sh`**: A script to automate the build and test process.
+
+---
 
 ## How to Build and Run Tests
 
@@ -41,8 +111,22 @@ git clone https://github.com/figurekim317/ATMcontroller.git
 2. **Run the unit tests**:
 
     ```bash
-    python -m unittest test_atm.py
+    python -m unittest tests/test_atm.py
     ```
+
+3. **Alternatively, run ther test script**:
+ 
+    ```bash
+    ./run_tests.sh
+    ```
+
+    Note: Ensure the script has execute permissions:
+ 
+    ```bash
+    chmod +x run_tests.sh
+    ```
+
+---
 
 ### C++
 
@@ -52,17 +136,74 @@ git clone https://github.com/figurekim317/ATMcontroller.git
     cd cpp
     ```
 
-2. **Compile the test program**:
-
+2. **Build the project using the Makefile**:
     ```bash
-    g++ -std=c++11 -o test_atm atm.cpp test_atm.cpp
+    make
     ```
+
 
 3. **Run the tests**:
 
     ```bash
     ./test_atm
     ```
+
+4. **Alternatively, run the test script**:
+
+    ```bash
+    ./run_tests.sh
+    ```
+
+    Note: Ensure the script has execute permissions:
+ 
+    ```bash
+    chmod +x run_tests.sh
+    ```
+
+5. **Clean the build files (optional)**:
+
+    ```bash
+    make clean
+    ```
+
+---
+
+### Running with Docker
+
+You can run both the Python and C++ implementations inside Docker containers.
+
+### Python Implementation / Python 구현
+
+### Steps:
+1. **Navigate to the `python` directory**:
+    ```bash
+    cd python
+    ```
+2. **Build the Docker image**:
+    ```bash
+    docker build -t atm-python .
+    ```
+3. **Run the Docker container**:
+    ```bash
+    docker run --rm atm-python
+    ```
+
+### C++ Implementation
+
+### Steps:
+1. **Navigate to the `cpp` directory**:
+    ```bash
+    cd cpp
+    ```
+2. **Build the Docker image**:
+    ```bash
+    docker build -t atm-cpp .
+    ```
+3. **Run the Docker container**:
+    ```bash
+    docker run --rm atm-cpp
+    ```
+
 
 ## Exception Handling
 
@@ -101,3 +242,28 @@ The test cases cover:
 7. **Full ATM Flow**: 
    - Testing the entire flow from card insertion to transaction completion.
    - Error handling for operations performed out of sequence.
+
+---
+
+## Scripts
+
+### Python Test Script
+
+**`run_tests.sh`**: Automates the test execution for the Python implementation.  
+
+### Usage
+```bash
+cd python
+chmod +x run_tests.sh
+./run_tests.sh 
+```
+
+### C++ Test Script
+**`run_tests.sh`**: Automates the build and test process for the C++ implementation.
+
+### Usage
+```bash
+cd cpp
+chmod +x run_tests.sh
+./run_tests.sh
+```
