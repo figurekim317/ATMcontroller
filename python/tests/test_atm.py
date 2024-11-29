@@ -5,10 +5,10 @@ class TestATMController(unittest.TestCase):
     def setUp(self):
         """Set up a mock bank system and add an account."""
         self.bank = BankSystem()
-        # Use a valid 16-digit card number
-        self.bank.add_account("1234567812345678", "1234", initial_balance=100)
+        # Use a valid 16-digit card number that passes the Luhn algorithm
+        self.bank.add_account("4539578763621486", "1234", initial_balance=100)
+        self.card = Card("4539578763621486")  # Valid card number
         self.atm = ATMController(self.bank)
-        self.card = Card("1234567812345678")  # Valid card number
 
     def insert_card_and_authenticate(self, pin="1234"):
         """Helper method to insert a card and authenticate with a PIN."""
@@ -48,7 +48,7 @@ class TestATMController(unittest.TestCase):
         self.insert_card_and_authenticate()
         account = self.atm.select_account()
         self.assertIsNotNone(account)
-        self.assertEqual(account.account_id, "1234567812345678")
+        self.assertEqual(account.account_id, "4539578763621486")
 
     def test_view_balance_authenticated(self):
         """Test viewing balance after authentication."""
