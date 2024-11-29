@@ -167,7 +167,7 @@ ATMcontroller/
 
 You can run both the Python and C++ implementations inside Docker containers.
 
-### Python Implementation / Python 구현
+### Python Implementation
 
 ### Steps:
 1. **Navigate to the `python` directory**:
