@@ -28,10 +28,7 @@ $(TARGET): $(OBJS) $(TEST_OBJS)
 	@mkdir -p $(BIN_DIR)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-test: $(TARGET)
-	./$(TARGET)
-
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 
-.PHONY: all clean test
+.PHONY: all clean
