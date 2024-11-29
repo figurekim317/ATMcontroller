@@ -1,6 +1,7 @@
 #include "Card.h"
 #include <stdexcept>
 #include <cctype>
+#include <algorithm>
 
 // Constructor that initializes the card with a given card number.
 Card::Card(const std::string& card_number) {
