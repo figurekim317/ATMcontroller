@@ -40,4 +40,5 @@ jobs:
           cd cpp && ls -R
       - name: Run C++ tests
         run: |
-          cd cpp && ./bin/test_atm
+          cd cpp &&
+          ./bin/test_atm
