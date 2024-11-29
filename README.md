@@ -26,7 +26,7 @@ git clone https://github.com/figurekim317/ATMcontroller.git
 
 
 ## Project Structure
-
+```
 ATMcontroller/
 ├── python/
 │   ├── atm/
@@ -54,7 +54,7 @@ ATMcontroller/
 │   │   └── test_atm.cpp
 │   ├── Makefile
 │   └── run_tests.sh
-
+```
 
 ### Python Code Overview
 
