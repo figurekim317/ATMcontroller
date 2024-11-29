@@ -141,7 +141,8 @@ ATMcontroller/
 2. **Run the unit tests**:
 
     ```bash
-    python -m unittest tests/test_atm.py
+    python -m unittest discover -s tests -v
+
     ```
 
 3. **Alternatively, run ther test script**:
