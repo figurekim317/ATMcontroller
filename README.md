@@ -32,6 +32,12 @@ git clone https://github.com/figurekim317/ATMcontroller.git
 
 ## Requirements
 
+- **Dependencies**: Install required dependencies from requirements.txt:
+
+```bash
+pip install -r requirements.txt
+```
+
 ### Python Implementation:
 - **Python Version**: Python 3.7.2 or higher.
 
