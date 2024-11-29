@@ -1,5 +1,3 @@
-# atm/atm_controller.py
-
 from .bank_system import BankSystem
 from .card import Card
 
