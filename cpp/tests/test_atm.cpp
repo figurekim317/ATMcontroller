@@ -7,9 +7,9 @@ void test_insert_card() {
     std::cout << "[TEST] test_insert_card started." << std::endl;
 
     BankSystem bank;
-    bank.add_account("12345", "1234", 100);  // Add an account with initial balance
+    bank.add_account("1234567812345678", "1234", 100);  // Add an account with initial balance
     ATMController atm(bank);
-    Card card("12345");
+    Card card("1234567812345678");  // Valid card number
 
     atm.insert_card(card);  // Insert the card
     try {
@@ -27,9 +27,9 @@ void test_eject_card() {
     std::cout << "[TEST] test_eject_card started." << std::endl;
 
     BankSystem bank;
-    bank.add_account("12345", "1234", 100);  // Add an account
+    bank.add_account("1234567812345678", "1234", 100);  // Add an account
     ATMController atm(bank);
-    Card card("12345");
+    Card card("1234567812345678");  // Valid card number
 
     atm.insert_card(card);  // Insert the card
     atm.eject_card();       // Eject the card
@@ -48,9 +48,9 @@ void test_enter_pin() {
     std::cout << "[TEST] test_enter_pin started." << std::endl;
 
     BankSystem bank;
-    bank.add_account("12345", "1234", 100);  // Add an account
+    bank.add_account("1234567812345678", "1234", 100);  // Add an account
     ATMController atm(bank);
-    Card card("12345");
+    Card card("1234567812345678");  // Valid card number
 
     atm.insert_card(card);       // Insert the card
     atm.enter_pin("1234");       // Enter correct PIN
@@ -73,9 +73,9 @@ void test_view_balance() {
     std::cout << "[TEST] test_view_balance started." << std::endl;
 
     BankSystem bank;
-    bank.add_account("12345", "1234", 100);  // Add an account with balance 100
+    bank.add_account("1234567812345678", "1234", 100);  // Add an account with balance 100
     ATMController atm(bank);
-    Card card("12345");
+    Card card("1234567812345678");  // Valid card number
 
     atm.insert_card(card);       // Insert the card
     atm.enter_pin("1234");       // Enter correct PIN
@@ -91,9 +91,9 @@ void test_deposit() {
     std::cout << "[TEST] test_deposit started." << std::endl;
 
     BankSystem bank;
-    bank.add_account("12345", "1234", 100);  // Initial balance is 100
+    bank.add_account("1234567812345678", "1234", 100);  // Initial balance is 100
     ATMController atm(bank);
-    Card card("12345");
+    Card card("1234567812345678");  // Valid card number
 
     atm.insert_card(card);       // Insert the card
     atm.enter_pin("1234");       // Enter correct PIN
@@ -116,9 +116,9 @@ void test_withdraw() {
     std::cout << "[TEST] test_withdraw started." << std::endl;
 
     BankSystem bank;
-    bank.add_account("12345", "1234", 100);  // Initial balance is 100
+    bank.add_account("1234567812345678", "1234", 100);  // Initial balance is 100
     ATMController atm(bank);
-    Card card("12345");
+    Card card("1234567812345678");  // Valid card number
 
     atm.insert_card(card);        // Insert the card
     atm.enter_pin("1234");        // Enter correct PIN
@@ -148,9 +148,9 @@ void test_full_flow() {
     std::cout << "[TEST] test_full_flow started." << std::endl;
 
     BankSystem bank;
-    bank.add_account("12345", "1234", 100);  // Initial balance is 100
+    bank.add_account("1234567812345678", "1234", 100);  // Initial balance is 100
     ATMController atm(bank);
-    Card card("12345");
+    Card card("1234567812345678");  // Valid card number
 
     try {
         atm.view_balance();       // No card inserted, should throw exception
