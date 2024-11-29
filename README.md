@@ -27,20 +27,34 @@ git clone https://github.com/figurekim317/ATMcontroller.git
 
 ## Project Structure
 
-### Python Code
-
 ATMcontroller/
 ├── python/
-    ├── atm/
-    │   ├── __init__.py
-    │   ├── account.py
-    │   ├── atm_controller.py
-    │   ├── bank_system.py
-    │   └── card.py
-    └── tests/
-        ├── __init__.py
-        ├── test_atm.py
-        └── run_tests.sh
+│   ├── atm/
+│   │   ├── __init__.py
+│   │   ├── account.py
+│   │   ├── atm_controller.py
+│   │   ├── bank_system.py
+│   │   └── card.py
+│   └── tests/
+│       ├── __init__.py
+│       ├── test_atm.py
+│       └── run_tests.sh
+├── cpp/
+│   ├── include/
+│   │   ├── Account.h
+│   │   ├── ATMController.h
+│   │   ├── BankSystem.h
+│   │   └── Card.h
+│   ├── src/
+│   │   ├── Account.cpp
+│   │   ├── ATMController.cpp
+│   │   ├── BankSystem.cpp
+│   │   └── Card.cpp
+│   ├── tests/
+│   │   └── test_atm.cpp
+│   ├── Makefile
+│   └── run_tests.sh
+
 
 ### Python Code Overview
 
@@ -56,25 +70,6 @@ ATMcontroller/
   - **`test_atm.py`**: Provides unit tests to verify the functionality of the ATM system.
   - **`run_tests.sh`**: A script to automate the test execution.
 
-
-### C++ code
-
-ATMcontroller/
-├── cpp/
-    ├── include/
-    │   ├── Account.h
-    │   ├── ATMController.h
-    │   ├── BankSystem.h
-    │   └── Card.h
-    ├── src/
-    │   ├── Account.cpp
-    │   ├── ATMController.cpp
-    │   ├── BankSystem.cpp
-    │   └── Card.cpp
-    ├── tests/
-    │   └── test_atm.cpp
-    ├── Makefile
-    └── run_tests.sh
 
 ### C++ Code Overview
 
