@@ -24,7 +24,7 @@ class Card:
 
         self.card_number: str = card_number
 
-    @staticmethod
+    @staticmethod # 이 함수는 클래스의 인스턴스 없이 호출 가능한 메서드, 클래스 속성이나 인스턴스 속성을 사용하지 않고 card_number로만 동작
     def is_valid_card_number(card_number: str) -> bool:
         """
         Validates the card number using the Luhn algorithm.
@@ -39,6 +39,13 @@ class Card:
         alternate = False
 
         # Process digits from right to left
+        # Luhn 알고리즘
+        '''
+        Luhn 알고리즘 요약
+        카드 번호의 오른쪽에서 왼쪽으로 숫자를 순회하며, 교대로 두 배 처리.
+        두 배 처리 후 결과가 9보다 크면 자리합을 계산.
+        최종 합계를 10으로 나눈 나머지가 0이면 유효한 카드 번호.
+        '''
         for digit in reversed(card_number):
             num = int(digit)
             if alternate:
@@ -62,8 +69,11 @@ class Card:
     def get_masked_card_number(self) -> str:
         """
         Retrieves the masked version of the card number.
+        보안성 유지를 위해. 결제 화면에 카드 표시를 할 때, 은행 앱에서 거래 내역을 확인, 개발자가 카드 관련 기능을 디버깅하거나 문제를 추적할 때
 
         Returns:
             str: The masked card number (e.g., "****-****-****-1234").
         """
         return "****-****-****-" + self.card_number[-4:]
+
+
